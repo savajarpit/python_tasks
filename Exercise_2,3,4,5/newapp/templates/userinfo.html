@@ -1,0 +1,26 @@
+{% extends "layout.html" %} {% block content %}
+<div>
+  <h2>All Users:</h2>
+  {% if users %}
+  <table border="1" style="text-align: center;">
+    <thead>
+      <tr>
+        <td>Name</td>
+        <td>Email</td>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in users%}
+      <tr>
+        <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p>No users yet.</p>
+  {% endif %}
+</div>
+
+{% endblock %}

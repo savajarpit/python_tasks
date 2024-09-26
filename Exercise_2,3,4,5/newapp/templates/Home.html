@@ -1,0 +1,31 @@
+{% extends "layout.html" %} {% block content %}
+
+<div>
+  <section style="text-align: center;">
+    <h2>Welcome</h2>
+    <p>Current Date and Time : {{currentTime}}</p>
+  </section>
+  <div style="text-align: center">
+    <section>
+      <h2>Contact Us</h2>
+      <form method="POST" action="{% url 'contact' %}">
+        {% csrf_token %}
+        <label for="name">Name:</label>
+        <input type="text" name="name" required /><br /><br />
+        <label for="email">Email:</label>
+        <input type="email" name="email" required/><br /><br />
+        <input type="submit" value="submit" />
+      </form>
+      {% if submitted_data %}
+      <div class="submitted-data">
+        <h2>User information:</h2>
+        <p><strong>Name:</strong> {{ submitted_data.name }}</p>
+        <p><strong>Email:</strong> {{ submitted_data.email }}</p>
+      </div>
+      {% else %}
+      <p>No data submitted yet.</p>
+      {% endif %}
+    </section>
+  </div>
+</div>
+{% endblock %}
